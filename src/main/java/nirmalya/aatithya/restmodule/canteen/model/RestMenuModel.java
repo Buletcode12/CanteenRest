@@ -37,6 +37,17 @@ public class RestMenuModel {
 	}
 	
 	
+	public RestMenuModel(Object itemId, Object itemName,Object price) {
+		super();
+
+		
+		this.itemId = (String) itemId;
+		this.itemName = (String) itemName;
+		this.price = (String) price;
+		
+	}
+	
+	
 	public String getItemId() {
 		return itemId;
 	}

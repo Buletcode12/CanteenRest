@@ -49,6 +49,7 @@ public class RestMenuController {
 
 	}
 	
+	
 	@RequestMapping(value = "getvariants", method = { RequestMethod.GET })
 	public List<DropDownModel> getvariants() {
 		logger.info("Method : getvariants starts");

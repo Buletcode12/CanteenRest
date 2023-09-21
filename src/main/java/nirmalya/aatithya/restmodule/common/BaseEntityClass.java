@@ -2798,6 +2798,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
 
 		),
+		@NamedStoredProcedureQuery(name = "canteen-combo", procedureName = "canteen_combo_Routines", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionType", type = String.class),
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
+
+		),
 
 		/* Property Mgmt */
 //View and edit Property Details
