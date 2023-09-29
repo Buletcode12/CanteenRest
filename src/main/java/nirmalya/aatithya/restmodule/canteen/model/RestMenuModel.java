@@ -1,19 +1,23 @@
 package nirmalya.aatithya.restmodule.canteen.model;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class RestMenuModel {
     
 	private String itemId;
 	private String itemName;
+	private String comboName;
 	private String price;
 	private String categry;
 	private String subcategry;
 	private String variant;
 	private String status;
-	
+	private String comboId;
+	private List<RestMenuModel> itemList;
 	
 	
 	
@@ -21,7 +25,9 @@ public class RestMenuModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
+    
 
 	public RestMenuModel(Object categry, Object subcategry, Object variant,
 			Object itemId, Object itemName,Object price,Object status) {
@@ -37,7 +43,17 @@ public class RestMenuModel {
 	}
 	
 	
-	public RestMenuModel(Object itemId, Object itemName,Object price) {
+	public RestMenuModel(Object itemId, Object itemName,Object price , Object status) {
+		super();
+
+		
+		this.itemId = (String) itemId;
+		this.itemName = (String) itemName;
+		this.price = (String) price;
+		this.status = (String) status;
+		
+	}
+	public RestMenuModel(Object itemId, Object itemName,Object price ) {
 		super();
 
 		
@@ -46,8 +62,59 @@ public class RestMenuModel {
 		this.price = (String) price;
 		
 	}
+	/*
+	 * public RestMenuModel(Object itemId, Object itemName,Object price ,Object
+	 * status) { super();
+	 * 
+	 * 
+	 * this.itemId = (String) itemId; this.itemName = (String) itemName; this.price
+	 * = (String) price; this.status = (String) status;
+	 * 
+	 * }
+	 */
+	
+	public RestMenuModel(Object itemId, Object itemName) {
+		super();
+
+		
+		this.itemId = (String) itemId;
+		this.itemName = (String) itemName;
+		
+		
+	}
 	
 	
+	
+	public String getComboId() {
+		return comboId;
+	}
+
+
+	public void setComboId(String comboId) {
+		this.comboId = comboId;
+	}
+
+
+	public List<RestMenuModel> getItemList() {
+		return itemList;
+	}
+
+
+	public void setItemList(List<RestMenuModel> itemList) {
+		this.itemList = itemList;
+	}
+
+
+	public String getComboName() {
+		return comboName;
+	}
+
+
+	public void setComboName(String comboName) {
+		this.comboName = comboName;
+	}
+
+
 	public String getItemId() {
 		return itemId;
 	}
