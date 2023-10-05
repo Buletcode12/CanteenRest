@@ -22,16 +22,16 @@ public class GenerateCanteenComboParameter {
         if (canteenmenu.getComboName() != null && !canteenmenu.getComboName().isEmpty()) {
             s = s + "@p_comboName='" + canteenmenu.getComboName() + "',";
         }
-        
-        if (canteenmenu.getPrice() != null && !canteenmenu.getPrice().isEmpty()) {
-            s = s + "@p_price='" + canteenmenu.getPrice() + "',";
+        	
+        if (canteenmenu.getAllPrice() != null && !canteenmenu.getAllPrice().isEmpty()) {
+            s = s + "@p_allprice='" + canteenmenu.getAllPrice() + "',";
         }
         
         if (canteenmenu.getItemList() != null && !canteenmenu.getItemList().isEmpty()) {
             // Iterate through itemList and add its contents to litem
             for (RestMenuModel item : canteenmenu.getItemList()) {
                 if (item.getItemId() != null && item.getItemName() != null && item.getPrice() != null) {
-                    litem = litem + "(\"" + item.getItemId() + "\",\"" + item.getItemName() + "\",\"" + item.getPrice() + "\"),";
+                    litem = litem + "(@combo_id,\"" + item.getItemId() + "\",\"" + item.getItemName() + "\",\"" + item.getPrice() + "\"),";
                 }
             }
         }

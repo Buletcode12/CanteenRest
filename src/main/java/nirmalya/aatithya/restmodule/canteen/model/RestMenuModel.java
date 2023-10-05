@@ -12,6 +12,7 @@ public class RestMenuModel {
 	private String itemName;
 	private String comboName;
 	private String price;
+	private String allPrice;
 	private String categry;
 	private String subcategry;
 	private String variant;
@@ -25,6 +26,20 @@ public class RestMenuModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public RestMenuModel(Object comboId , Object comboName ,Object allPrice ,Object itemName, Object itemId, Object price) {
+		super();
+
+		this.comboId = (String) comboId;
+		this.comboName = (String) comboName;
+		this.allPrice = (String) allPrice;
+		this.itemId = (String) itemId;
+		this.itemName = (String) itemName;
+		this.price = (String) price;
+	}
+	
+	
 	
 	
     
@@ -43,13 +58,13 @@ public class RestMenuModel {
 	}
 	
 	
-	public RestMenuModel(Object itemId, Object itemName,Object price , Object status) {
+	public RestMenuModel(Object comboId, Object comboName,Object allPrice , Object status) {
 		super();
 
 		
-		this.itemId = (String) itemId;
-		this.itemName = (String) itemName;
-		this.price = (String) price;
+		this.comboId = (String) comboId;
+		this.comboName = (String) comboName;
+		this.allPrice = (String) allPrice;
 		this.status = (String) status;
 		
 	}
@@ -62,16 +77,6 @@ public class RestMenuModel {
 		this.price = (String) price;
 		
 	}
-	/*
-	 * public RestMenuModel(Object itemId, Object itemName,Object price ,Object
-	 * status) { super();
-	 * 
-	 * 
-	 * this.itemId = (String) itemId; this.itemName = (String) itemName; this.price
-	 * = (String) price; this.status = (String) status;
-	 * 
-	 * }
-	 */
 	
 	public RestMenuModel(Object itemId, Object itemName) {
 		super();
@@ -112,6 +117,16 @@ public class RestMenuModel {
 
 	public void setComboName(String comboName) {
 		this.comboName = comboName;
+	}
+
+
+	public String getAllPrice() {
+		return allPrice;
+	}
+
+
+	public void setAllPrice(String allPrice) {
+		this.allPrice = allPrice;
 	}
 
 

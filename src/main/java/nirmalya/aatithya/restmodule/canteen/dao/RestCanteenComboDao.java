@@ -122,8 +122,10 @@ public class RestCanteenComboDao {
 		try {
 			// String values ="";//
 			String values = GenerateCanteenComboParameter.addcanteenComboParam(incentiveDetails);
-			System.out.println(values);
-			if (incentiveDetails.getComboId() != "" || incentiveDetails.getComboId() != null) {
+			System.out.println("===================combo id==================================="+incentiveDetails.getComboId());
+			//if (incentiveDetails.getItemId() == "" || incentiveDetails.getItemId() == null) {
+
+			if (incentiveDetails.getComboId() == "" || incentiveDetails.getComboId() == null) {
        System.out.println("addd part");
 				em.createNamedStoredProcedureQuery("canteen-combo")
 						.setParameter("actionType", "addCombo")
@@ -132,7 +134,7 @@ public class RestCanteenComboDao {
 			} else {
 				System.out.println("modify part");
 				em.createNamedStoredProcedureQuery("canteen-combo")
-						.setParameter("actionType", "modifymenu")
+						.setParameter("actionType", "modifyCombo")
 						.setParameter("actionValue", values).execute();
 			}
 		} catch (Exception e) {
@@ -336,11 +338,9 @@ public class RestCanteenComboDao {
 			List<Object[]> x = em.createNamedStoredProcedureQuery("canteen-combo")
 					.setParameter("actionType", "editCombo").setParameter("actionValue", value).getResultList();
 			
-	     
 			for (Object[] m : x) {
 
-				RestMenuModel restPayroll = new RestMenuModel(m[0], m[1],m[2]);
-						
+				RestMenuModel restPayroll = new RestMenuModel(m[0], m[1], m[2], m[4], m[3], m[5]);
 			
 				rs.add(restPayroll);
 				
@@ -374,7 +374,7 @@ public class RestCanteenComboDao {
 				try {
 
 					
-					String value = "SET  @p_itemid=" + id + ";";
+					String value = "SET  @combo_id=" + id + ";";
 					
 					System.out.println("value------------------"+value);
 					
