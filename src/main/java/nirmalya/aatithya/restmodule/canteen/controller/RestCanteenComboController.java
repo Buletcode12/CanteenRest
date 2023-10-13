@@ -89,7 +89,7 @@ public class RestCanteenComboController {
 				return restCanteenComboDao.viewShoukeenIncentive();
 			}
 			
-			//View
+		//View
 			@RequestMapping(value="viewRowdata" , method = {RequestMethod.GET})
 			public ResponseEntity<JsonResponse<List<RestMenuModel>>> restviewRowdata( String itemId ){
 				logger.info("Method: restviewRowdata View Start");
@@ -98,8 +98,8 @@ public class RestCanteenComboController {
 				return restCanteenComboDao.viewRowdata(itemId);
 			}
 			
-			//Searching
-
+	
+		//Searching
 			@GetMapping(value = "getProductSList")
 			public ResponseEntity<JsonResponse<List<RestMenuModel>>> getProductSearchList(@RequestParam String id) {
 				logger.info("Method : getProductSearchList starts");
@@ -109,7 +109,7 @@ public class RestCanteenComboController {
 			}
 		
 			
-			//Edit
+		//Edit
 			@GetMapping(value = "editcanteencombo")
 			public ResponseEntity<JsonResponse<List<RestMenuModel>>> editShoukeenincentiveInfo(
 					@RequestParam String id) {
@@ -121,7 +121,7 @@ public class RestCanteenComboController {
 			}
 			
 			
-			//Delete
+		//Delete
 			@RequestMapping(value = "deleteComboDetails", method = { RequestMethod.GET })
 			public ResponseEntity<JsonResponse<Object>> restdeleteComboDetails(@RequestParam String id) {
 				logger.info("Method : restdeleteComboDetails starts"+id);
@@ -129,8 +129,6 @@ public class RestCanteenComboController {
 				logger.info("Method :  deleteComboDetails ends");
 				return restCanteenComboDao.deleteComboDetails(id);
 			}
-			
-			
 	
 
 }
