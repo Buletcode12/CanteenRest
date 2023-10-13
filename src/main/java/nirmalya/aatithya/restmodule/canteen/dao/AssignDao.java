@@ -110,7 +110,7 @@ public class AssignDao {
 	public List<DropDownModel> getcombo() {
 		logger.info("Method : getcombo starts");
 
-		List<DropDownModel> getcombo = new ArrayList<DropDownModel>();
+		List<DropDownModel> getcombo = new ArrayList<DropDownModel>();	
 
 		try {
 			List<Object[]> x = em.createNamedStoredProcedureQuery("canteen-assign")
