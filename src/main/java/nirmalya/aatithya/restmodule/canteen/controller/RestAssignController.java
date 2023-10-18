@@ -72,15 +72,28 @@ public class RestAssignController {
 		logger.info("Method: restViewCombo ends");
 		return assignDao.viewAssign(CatId, SubCatId, variant, combo);
 	}
+	
+	// View
+		@RequestMapping(value = "rest-assign-combo-list", method = { RequestMethod.GET })
+		public ResponseEntity<JsonResponse<List<RestMenuModel>>> restViewShoukeenIncentive(String comboId
+				) {
+			logger.info("Method: restViewCombo View Start");
+
+			logger.info("Method: restViewCombo ends");
+			return assignDao.viewAssignCombo(comboId);
+		}
+
 
 	// View
-	@RequestMapping(value = "restViewAssignDetails", method = { RequestMethod.GET })
-	public ResponseEntity<JsonResponse<List<RestMenuModel>>> restViewShoukeenIncentive() {
-		logger.info("Method: restViewincentivesdetails View Start");
-
-		logger.info("Method: restViewincentivesdetails ends");
-		return assignDao.viewShoukeenIncentive();
-	}
+	/*
+	 * @RequestMapping(value = "restViewAssignDetails", method = { RequestMethod.GET
+	 * }) public ResponseEntity<JsonResponse<List<RestMenuModel>>>
+	 * restViewShoukeenIncentive() {
+	 * logger.info("Method: restViewincentivesdetails View Start");
+	 * 
+	 * logger.info("Method: restViewincentivesdetails ends"); return
+	 * assignDao.viewShoukeenIncentive(); }
+	 */
 
 	// Searching
 	@GetMapping(value = "getProductSassign")
