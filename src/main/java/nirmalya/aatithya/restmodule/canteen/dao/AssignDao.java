@@ -12,9 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
+import nirmalya.aatithya.restmodule.canteen.model.RestAssignComboModel;
 import nirmalya.aatithya.restmodule.canteen.model.RestMenuModel;
 import nirmalya.aatithya.restmodule.common.ServerDao;
 import nirmalya.aatithya.restmodule.common.utils.DropDownModel;
+import nirmalya.aatithya.restmodule.common.utils.GenerateCanteenAssignParameter;
+import nirmalya.aatithya.restmodule.common.utils.GenerateCanteenMenuParameter;
 import nirmalya.aatithya.restmodule.common.utils.JsonResponse;
 @Repository
 public class AssignDao {
@@ -319,7 +322,7 @@ public class AssignDao {
 
 						itemNameList.add(dropDownModel);
 					}
-					// System.out.println("getAllcustomer" +itemNameList);
+				System.out.println("getAllcustomer" +itemNameList);
 					if (itemNameList.size() > 0) {
 						resp.setBody(itemNameList);
 						resp.setCode("success");
@@ -340,5 +343,46 @@ public class AssignDao {
 			}
 			
 	
+			// Add
+			public ResponseEntity<JsonResponse<Object>> addAssignComboModel(RestAssignComboModel restAssignComboModel) {
+
+				logger.info("Method in Dao: addIncentiveDetailsdao starts");
+
+				JsonResponse<Object> resp = new JsonResponse<Object>();
+
+				resp.setMessage("");
+				resp.setCode("");
+				try {
+					// String values ="";//
+					String values = GenerateCanteenAssignParameter.addCanteenAssignParameter(restAssignComboModel);
+					System.out.println(values);
+					if (restAssignComboModel.getWeakendId() == "" || restAssignComboModel.getWeakendId() == null) {
+
+						em.createNamedStoredProcedureQuery("canteen-assign")
+								.setParameter("actionType", "addComboAssign").setParameter("actionValue", values).execute();
+
+					} else {
+						em.createNamedStoredProcedureQuery("canteen-menu")
+								.setParameter("actionType", "modifymenu").setParameter("actionValue", values).execute();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					try {
+						String[] err = serverDao.errorProcedureCall(e);
+						resp.setCode(err[0]);
+						resp.setMessage(err[1]);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+
+				ResponseEntity<JsonResponse<Object>> response = new ResponseEntity<JsonResponse<Object>>(resp,
+						HttpStatus.CREATED);
+
+				logger.info("Method in Dao:addIncentiveDetailsdao ends" + response);
+
+				return response;
+			}
+			
 
 }

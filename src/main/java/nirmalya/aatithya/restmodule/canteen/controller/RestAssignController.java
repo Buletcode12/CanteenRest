@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nirmalya.aatithya.restmodule.canteen.dao.AssignDao;
 import nirmalya.aatithya.restmodule.canteen.dao.RestMenuDao;
+import nirmalya.aatithya.restmodule.canteen.model.RestAssignComboModel;
 import nirmalya.aatithya.restmodule.canteen.model.RestMenuModel;
 import nirmalya.aatithya.restmodule.common.utils.DropDownModel;
 import nirmalya.aatithya.restmodule.common.utils.JsonResponse;
@@ -112,4 +114,16 @@ public class RestAssignController {
 		logger.info("Method :getComboSearchList endss");
 		return assignDao.getComboList(id);
 	}
+	
+	
+	//Add
+		@RequestMapping(value="restassign-add" , method={RequestMethod.POST})
+		public ResponseEntity<JsonResponse<Object>> restaddassign(@RequestBody RestAssignComboModel restAssignComboModel) 
+		{
+			logger.info("Method : addrestAssignComboModel starts");
+			
+			logger.info("Method : addrestAssignComboModel ends");
+			
+			return assignDao.addAssignComboModel(restAssignComboModel);
+		}
 }
