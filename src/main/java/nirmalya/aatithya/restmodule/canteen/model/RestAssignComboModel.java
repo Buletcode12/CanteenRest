@@ -5,15 +5,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-
 public class RestAssignComboModel {
       
 	 private String weakendId;
 	 private String weakendName;
 	 private List<RestAssignItemdata> data;
 	
-
 	public String getWeakendId() {
 		return weakendId;
 	}

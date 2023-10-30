@@ -202,8 +202,8 @@ public class RestHrmsEventDashboardDao {
 		return resp;
 	}
 
-	// Leave Eligibility
-
+	
+   // Leave Eligibility
 	@SuppressWarnings("unchecked")
 	public JsonResponse<List<RestHrmsEventDashboardModel>> viewLeaveEligibility(String organization,
 			String orgDivision) {
@@ -256,7 +256,8 @@ public class RestHrmsEventDashboardDao {
 		return resp;
 	}
 
-	// Leave Policy
+	
+  // Leave Policy
 	@SuppressWarnings("unchecked")
 	public JsonResponse<List<RestHrmsEventDashboardModel>> getLeavePolicyListDao(String organization,
 			String orgDivision) {

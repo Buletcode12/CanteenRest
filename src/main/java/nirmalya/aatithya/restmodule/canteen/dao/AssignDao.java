@@ -343,7 +343,7 @@ public class AssignDao {
 			}
 			
 	
-			// Add
+			// Add Combo 
 			public ResponseEntity<JsonResponse<Object>> addAssignComboModel(RestAssignComboModel restAssignComboModel) {
 
 				logger.info("Method in Dao: addIncentiveDetailsdao starts");
@@ -352,12 +352,15 @@ public class AssignDao {
 
 				resp.setMessage("");
 				resp.setCode("");
+				
 				try {
 					// String values ="";//
 					String values = GenerateCanteenAssignParameter.addCanteenAssignParameter(restAssignComboModel);
 					System.out.println(values);
 					if (restAssignComboModel.getWeakendId() == "" || restAssignComboModel.getWeakendId() == null) {
-
+                       
+						System.out.println("restAssignComboModel"+restAssignComboModel);
+						
 						em.createNamedStoredProcedureQuery("canteen-assign")
 								.setParameter("actionType", "addComboAssign").setParameter("actionValue", values).execute();
 
@@ -365,6 +368,7 @@ public class AssignDao {
 						em.createNamedStoredProcedureQuery("canteen-menu")
 								.setParameter("actionType", "modifymenu").setParameter("actionValue", values).execute();
 					}
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 					try {
